@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TRB SMS Opt-In</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; max-width: 720px; margin: 2rem auto; padding: 0 1rem; color: #111; }
+    h1 { font-size: 1.75rem; margin-bottom: 0.25rem; }
+    .meta { color: #555; margin-bottom: 1.25rem; }
+    .card { border: 1px solid #ddd; border-radius: 10px; padding: 1.25rem; background: #fafafa; }
+    label { display: block; margin: 0.75rem 0 0.35rem; font-weight: 600; }
+    input[type=text], input[type=tel], input[type=email] { width: 100%; max-width: 420px; padding: 0.6rem 0.7rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; }
+    .consent { display: flex; gap: 0.6rem; align-items: flex-start; margin-top: 1rem; }
+    .consent input { margin-top: 0.25rem; }
+    button { margin-top: 1rem; background: #0b57d0; color: #fff; border: 0; border-radius: 8px; padding: 0.7rem 1rem; font-size: 1rem; cursor: pointer; }
+    .disclosures { margin-top: 1.25rem; font-size: 0.95rem; color: #333; }
+    a { color: #0b57d0; }
+    .note { margin-top: 1.5rem; color: #555; font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <h1>TRB SMS Opt-In</h1>
+  <p class="meta">Brand: TRB (Michael From)<br />SMS sender: +1 (470) 480-0299<br />Contact: <a href="mailto:mrfrom@gmail.com">mrfrom@gmail.com</a></p>
+
+  <div class="card">
+    <p><strong>Program:</strong> TRB sends transactional notifications and operational alerts you request or agree to receive (for example appointment reminders, status updates, and assistant-triggered alerts).</p>
+
+    <form id="optin" action="#" method="get" onsubmit="return handleSubmit(event)">
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" autocomplete="name" required />
+
+      <label for="mobile">Mobile phone number (US/Canada)</label>
+      <input id="mobile" name="mobile" type="tel" inputmode="tel" autocomplete="tel" placeholder="+1XXXXXXXXXX" required />
+
+      <label for="email">Email (optional)</label>
+      <input id="email" name="email" type="email" autocomplete="email" />
+
+      <div class="consent">
+        <!-- unchecked by default — required active consent -->
+        <input id="agree" name="agree" type="checkbox" required />
+        <label for="agree" style="font-weight:500;margin:0">
+          I agree to receive recurring automated SMS messages from <strong>TRB</strong> at the mobile number provided.
+          Message frequency varies. Message and data rates may apply.
+          Reply <strong>STOP</strong> to cancel. Reply <strong>HELP</strong> for help.
+          Consent is not a condition of purchase.
+          I have read the
+          <a href="./privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>
+          and
+          <a href="./terms-and-conditions.html" target="_blank" rel="noopener">Terms &amp; Conditions</a>.
+        </label>
+      </div>
+
+      <button type="submit">Agree &amp; Opt In to TRB SMS</button>
+    </form>
+
+    <div class="disclosures">
+      <p><strong>Disclosures shown at opt-in:</strong></p>
+      <ul>
+        <li>Program name / brand: TRB</li>
+        <li>Message types: transactional notifications and operational alerts</li>
+        <li>Message frequency varies</li>
+        <li>Message and data rates may apply</li>
+        <li>Opt out: reply STOP</li>
+        <li>Help: reply HELP or email mrfrom@gmail.com</li>
+        <li>Links to Privacy Policy and Terms &amp; Conditions</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="note">This page is the public Call-to-Action / consent capture for TRB SMS A2P 10DLC registration. Submissions on this static demo page are not stored by the website host; opt-in records for live messaging are collected by TRB when this consent language is completed.</p>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const agree = document.getElementById('agree');
+      if (!agree.checked) return false;
+      alert('Thank you. Your TRB SMS opt-in consent has been recorded for review purposes. Reply STOP anytime to cancel.');
+      return false;
+    }
+  </script>
+</body>
+</html>
